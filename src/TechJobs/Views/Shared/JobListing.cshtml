@@ -1,0 +1,22 @@
+﻿@foreach(Dictionary<string, string> job in ViewBag.jobs)
+{
+    <table class="job-listing">
+        @foreach(KeyValuePair<string, string> jobType in job)
+        {
+            if (jobType.Key == "name")
+            {
+                <tr>
+                    <td>@jobType.Key</td>
+                    <td>@jobType.Value</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>@jobType.Key</td>
+                    <td><a asp-controller="List" asp-action="Jobs" asp-route-column="@jobType.Key" asp-route-value="@jobType.Value">@jobType.Value</a></td>
+                </tr>
+            }
+        }
+    </table>
+}
